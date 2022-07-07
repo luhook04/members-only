@@ -1,7 +1,31 @@
 doctype html
-html
+html(lang='en')
   head
     title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+  body 
+    div(class="nav-container")
+      block navbar
+        nav(class="nav-bar")
+          h3(class="title")
+            a(href="/") Member's Only
+          if !user
+            ul(class="sidebar-nav")
+              li
+                a(href="/sign-up") Sign Up
+              li 
+                a(href="/login") Login
+          else 
+            ul(class="sidebar-nav")
+              li
+                a(href="/create-message") Create Message 
+              li 
+                a(href="/member") Member
+              li 
+                a(href='/admin') Admin 
+              li 
+                a(href='/logout') Logout: #{user.username}
+    div(class="block-container")
+      block content
