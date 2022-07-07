@@ -1,16 +1,17 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var mongoose = require("mongoose");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 const passport = require("passport");
+const dotenv = require("dotenv").config();
 
-var app = express();
+const app = express();
 
 // mongoDB setup with mongoose
 const mongoDB = process.env.MONGODB_URI;
@@ -18,7 +19,7 @@ mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
