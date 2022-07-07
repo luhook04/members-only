@@ -1,0 +1,21 @@
+extends layout
+
+block content 
+	form(method='POST' action='/')
+		.form-signup
+			label(for="username") Username: 
+			input(type='text', required='true', maxLength='15')
+			if error 
+				p(style="color: red") #{error}
+		.form-signup 
+			label(for='password') Password: 
+			input(type='password', required='true', maxLength='15')
+		.form-signup 
+			label(for="confirmPassword") Confirm Password: 
+			input(type="password", required='true', maxLength='15')
+		button(type='submit') Register
+	
+	if errors
+		ul 
+			for error in errors 
+				li!= error.msg
