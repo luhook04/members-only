@@ -10,7 +10,7 @@ var usersRouter = require("./routes/users");
 var app = express();
 
 // mongoDB setup with mongoose
-var mongoDB = "insert_your_database_url_here";
+const mongoDB = process.env.MONGODB_URI;
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
