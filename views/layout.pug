@@ -11,7 +11,7 @@ html(lang='en')
         nav(class="nav-bar")
           h3(class="title")
             a(href="/") Member's Only
-          if !user
+          if (!user)
             ul(class="sidebar-nav")
               li
                 a(href="/sign-up") Sign Up
