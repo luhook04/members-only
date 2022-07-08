@@ -85,6 +85,11 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
