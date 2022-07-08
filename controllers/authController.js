@@ -67,6 +67,7 @@ exports.signup_post = [
 ];
 
 exports.login_get = (req, res, next) => {
+  if (res.locals.currentUser) return res.redirect("/");
   res.render("login-form", { title: "Login" });
 };
 
