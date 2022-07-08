@@ -1,18 +1,18 @@
 extends layout
 
 block content 
-	form(method='POST' action='/')
+	form(method='POST' action='')
 		.form-signup
 			label(for="username") Username: 
-			input(type='text', required='true', maxLength='15')
+			input(type='text', name="username" required='true' maxLength='15')
 			if error 
 				p(style="color: red") #{error}
 		.form-signup 
 			label(for='password') Password: 
-			input(type='password', required='true', maxLength='15')
+			input(type='password', name="password" required='true')
 		.form-signup 
-			label(for="confirmPassword") Confirm Password: 
-			input(type="password", required='true', maxLength='15')
+			label(for="password-confirm") Confirm Password: 
+			input(type="password", required='true' name="password-confirm")
 		button(type='submit') Register
 	
 	if errors
