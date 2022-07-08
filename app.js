@@ -8,7 +8,7 @@ const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-
+const User = require("./models/userModel");
 const passport = require("passport");
 const dotenv = require("dotenv").config();
 
@@ -27,6 +27,23 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+
+passport.use(
+  new LocalStrategy((username, password, done) => {
+    User.findOne({ username: username }, (err, user) => {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
+      if (user.password !== password) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+      return done(null, user);
+    });
+  })
+);
 
 app.use(
   session({
