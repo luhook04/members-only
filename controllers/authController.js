@@ -65,3 +65,12 @@ exports.signup_post = [
     }
   },
 ];
+
+exports.login_get = (req, res, next) => {
+  res.render("login-form", { title: "Login" });
+};
+
+exports.login_post = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+});
