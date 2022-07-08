@@ -11,6 +11,7 @@ const usersRouter = require("./routes/users");
 const User = require("./models/userModel");
 const passport = require("passport");
 const dotenv = require("dotenv").config();
+const bcrypt = require("bcryptjs");
 
 const app = express();
 
