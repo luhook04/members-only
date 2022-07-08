@@ -26,6 +26,7 @@ html(lang='en')
               li 
                 a(href='/admin') Admin 
               li 
-                a(href='/logout') Logout: #{user.username}
+                a(href='/logout') Logout:
+                |  #{user.username}
     div(class="block-container")
       block content
