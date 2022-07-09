@@ -65,12 +65,12 @@ exports.admin_post = [
     var user = new User(res.locals.currentUser);
 
     if (!errors.isEmpty()) {
-      res.render("member_form", {
+      res.render("admin_form", {
         title: "Become an Admin",
         errors: errors.array(),
       });
     } else if (req.body.passcode !== "adminhi") {
-      res.render("member_form", {
+      res.render("admin_form", {
         title: "Become an Admin",
         error: "Wrong Password",
       });
