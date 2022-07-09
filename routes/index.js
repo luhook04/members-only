@@ -3,12 +3,22 @@ var router = express.Router();
 const auth_controller = require("../controllers/authController");
 const membershipController = require("../controllers/membershipController");
 const messageController = require("../controllers/messageController");
+const Message = require("../models/messageModel");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", {
-    title: "Member's Only",
-  });
+  Message.find()
+    .sort([["timestamp", "descending"]])
+    .populate("user")
+    .exec(function (err, messages) {
+      if (err) {
+        return next(err);
+      }
+      res.render("index", {
+        title: "Member's Only",
+        messages: messages,
+      });
+    });
 });
 
 router.get("/sign-up", auth_controller.signup_get);
