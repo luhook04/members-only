@@ -3,13 +3,16 @@ extends layout
 block content 
 	if (!currentUser.isMember)
 		form(method='POST' action='/member')
-		h2= title
-		.member-passcode
-			label(for="member-password") Password:
-			input(type='password', name="member-password" required='true')
-		button(type='submit') Enter
+			h2= title
+			.member-password
+				label(for="passcode") Password:
+				input(type='password', name="passcode" required='true')
+			button(type='submit') Enter
 
-		if (error)
+		if error 
+			p #{error}
+
+		if errors
 			ul 
 				for error in errors 
 					li!= error.msg
