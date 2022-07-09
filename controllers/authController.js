@@ -51,7 +51,7 @@ exports.signup_post = [
               password: hashedPassword,
               isMember: false,
               isAdmin: false,
-              avatar: "alien1",
+              avatar: req.body.avatar,
             }).save((err) => {
               if (err) {
                 return next(err);

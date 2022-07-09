@@ -9,10 +9,24 @@ block content
 				p(style="color: red") #{error}
 		.form-signup 
 			label(for='password') Password: 
-			input(type='password', name="password" required='true')
+			input(type='password', name="password" required='true' autocomplete="on")
 		.form-signup 
 			label(for="password-confirm") Confirm Password: 
-			input(type="password", required='true' name="password-confirm")
+			input(type="password", required='true' name="password-confirm" autocomplete="on")
+		.avatar-container
+			h3 Select your Avatar:
+			label
+				input(type='radio', name="avatar" value="alien" required="true" checked)
+				img(src="/images/alien.svg")
+			label
+				input(type='radio', name="avatar" value="saturn" required="true")
+				img(src="/images/saturn.svg")
+			label
+				input(type='radio', name="avatar" value="ship" required="true")
+				img(src='/images/ship.svg')
+			label
+				input(type='radio', name="avatar" value="ufo" required="true")
+				img(src="/images/ufo.svg")
 		button(type='submit') Register
 	
 	if errors

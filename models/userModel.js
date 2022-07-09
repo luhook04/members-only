@@ -9,8 +9,8 @@ const UserSchema = new Schema({
   avatar: {
     type: String,
     required: true,
-    enum: ["alien1", "alien2", "alien3"],
-    default: "alien1",
+    enum: ["alien", "saturn", "ship", "ufo"],
+    default: "alien",
   },
 });
 
