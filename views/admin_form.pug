@@ -1,4 +1,23 @@
 extends layout 
 
-block content
+block content 
+	if (!currentUser.isAdmin)
+		form(method='POST' action='/admin')
+			h2= title
+			.member-password
+				label(for="passcode") Password:
+				input(type='password', name="passcode" required='true')
+			button(type='submit') Enter
+
+		if error 
+			p #{error}
+
+		if errors
+			ul 
+				for error in errors 
+					li!= error.msg
 	
+	else 
+		div(class='member-message')
+			h2 You're an Admin!
+			a(href='/') Home

@@ -1,8 +1,8 @@
 extends layout 
 
 block content 
-	if (!currentUser.isAdmin)
-		form(method='POST' action='/admin')
+	if (!currentUser.isMember)
+		form(method='POST' action='/member')
 			h2= title
 			.member-password
 				label(for="passcode") Password:
@@ -19,5 +19,5 @@ block content
 	
 	else 
 		div(class='member-message')
-			h2 You're an Admin!
+			h2 Congrats! You're a member!
 			a(href='/') Home
