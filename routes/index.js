@@ -20,6 +20,7 @@ router.get("/", function (req, res, next) {
       });
     });
 });
+router.post("/", messageController.delete_message_post);
 
 router.get("/sign-up", auth_controller.signup_get);
 router.post("/sign-up", auth_controller.signup_post);
