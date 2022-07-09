@@ -1,5 +1,37 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  if (messages)
+    div(class="messages-container")
+      if (!currentUser || !currentUser.isMember)
+        div(class="message-container")
+          div(class="left-message")
+            p image goes here 
+          div(class="right-message")
+            h3 Hello, Users!
+            p Register an account and user the passcode "hi" to become a member to view additional message info. 
+          div(class="message-info")
+            p posted by: luhook 
+            p Nov 10, 1980
+      each message in messages 
+        if (!currentUser || !currentUser.isMember)
+          div(class="message-container")
+            div(class="left-message")
+              p anonymous image 
+            div(class="right-message")
+              h3 #{message.title}
+              p #{message.text} 
+            div(class="message-info")
+              p N/A 
+              p anonymous
+        if (currentUser && currentUser.isMember)
+          div(class="message-container")
+            div(class='left-message')
+              p #{message.user.avatar}
+            div(class='right-message')
+              h3 #{message.title} 
+              p #{message.text}
+            div(class='message-info')
+              p #{message.user.username}
+              p #{message.date}
+  

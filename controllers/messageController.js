@@ -26,7 +26,7 @@ exports.create_message_post = [
       user: res.locals.currentUser,
       title: req.body.title,
       text: req.body.text,
-      timestape: Date.now(),
+      timestamp: Date.now(),
     }).save((err) => {
       if (err) {
         return next(err);
