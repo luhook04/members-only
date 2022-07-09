@@ -11,7 +11,7 @@ html(lang='en')
         nav(class="nav-bar")
           h3(class="title")
             a(href="/") Member's Only
-          if (!user)
+          if (!currentUser)
             ul(class="sidebar-nav")
               li
                 a(href="/sign-up") Sign Up
@@ -27,6 +27,6 @@ html(lang='en')
                 a(href='/admin') Admin 
               li 
                 a(href='/logout') Logout:
-                |  #{user.username}
+                |  #{currentUser.username} 
     div(class="block-container")
       block content
