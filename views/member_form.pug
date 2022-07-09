@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+	if (!currentUser.isMember)
+		form(method='POST' action='/member')
+		h2= title
+		.member-passcode
+			label(for="member-password") Password:
+			input(type='password', name="member-password" required='true')
+		button(type='submit') Enter
+
+		if (error)
+			ul 
+				for error in errors 
+					li!= error.msg
+	
+	else 
+		div(class='member-message')
+			h2 Congrats! You're a member!
+			a(href='/') Home
