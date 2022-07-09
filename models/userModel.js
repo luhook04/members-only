@@ -14,4 +14,8 @@ const UserSchema = new Schema({
   },
 });
 
+UserSchema.virtual("imgURL").get(function () {
+  return "/images/" + this.avatar + ".svg";
+});
+
 module.exports = mongoose.model("User", UserSchema);
