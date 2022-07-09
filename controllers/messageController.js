@@ -28,6 +28,7 @@ exports.create_message_post = [
       text: req.body.text,
       timestape: Date.now(),
     }).save((err) => {
+      s;
       if (err) {
         return next(err);
       }
