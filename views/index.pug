@@ -6,7 +6,7 @@ block content
       if (!currentUser || !currentUser.isMember)
         div(class="message-container")
           div(class="left-message")
-            p image goes here 
+            img(src='/images/alien.svg')
           div(class="right-message")
             h3 Hello, Users!
             p Register an account and user the passcode "hi" to become a member to view additional message info. 
@@ -17,7 +17,7 @@ block content
         if (!currentUser || !currentUser.isMember)
           div(class="message-container")
             div(class="left-message")
-              p anonymous image 
+              img(src="images/alien.svg") 
             div(class="right-message")
               h3 #{message.title}
               p #{message.text} 
@@ -27,11 +27,12 @@ block content
         if (currentUser && currentUser.isMember)
           div(class="message-container")
             div(class='left-message')
-              p #{message.user.avatar}
+              img(src= message.user.imgURL)
             div(class='right-message')
               h3 #{message.title} 
               p #{message.text}
             div(class='message-info')
-              p #{message.user.username}
+              p Posted by: #[Strong #{message.user.username}]
+            
               p #{message.date}
   
