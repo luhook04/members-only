@@ -23,7 +23,7 @@ exports.create_message_post = [
     }
 
     const message = new Message({
-      user: req.user._id,
+      user: res.locals.currentUser,
       title: req.body.title,
       text: req.body.text,
       timestape: Date.now(),
