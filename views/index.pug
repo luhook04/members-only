@@ -34,4 +34,9 @@ block content
             div(class='message-info')
               p Posted by: #[Strong #{message.user.username}]
               p #{message.date}
+              if (currentUser && currentUser.isAdmin)
+                div.delete-msg
+                  form(action="" method="POST")
+                    input(type="hidden", name="messageId", required="true", value=message._id)
+                    button(type="submit") &#128465
   
