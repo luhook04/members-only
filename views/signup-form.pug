@@ -2,6 +2,7 @@ extends layout
 
 block content 
 	form(method='POST' action='')
+		h2= title
 		.form-signup
 			label(for="username") Username: 
 			input(type='text', name="username" required='true' maxLength='15')
@@ -14,7 +15,6 @@ block content
 			label(for="password-confirm") Confirm Password: 
 			input(type="password", required='true' name="password-confirm" autocomplete="on")
 		.avatar-container
-			h3 Select your Avatar:
 			label
 				input(type='radio', name="avatar" value="alien" required="true" checked)
 				img(src="/images/alien.svg")

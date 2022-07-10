@@ -9,16 +9,16 @@ html(lang='en')
     div(class="nav-container")
       block navbar
         nav(class="nav-bar")
-          h3(class="title")
+          h2(class="title")
             a(href="/") Member's Only
           if (!currentUser)
-            ul(class="sidebar-nav")
+            ul(class="nav")
               li
                 a(href="/sign-up") Sign Up
               li 
                 a(href="/login") Login
           else 
-            ul(class="sidebar-nav")
+            ul(class="nav")
               li
                 a(href="/create-message") Create Message 
               li 
@@ -27,6 +27,6 @@ html(lang='en')
                 a(href='/admin') Admin 
               li 
                 a(href='/logout') Logout:
-                |  #{currentUser.username} 
+                |  #[Strong #{currentUser.username}]
     div(class="block-container")
       block content

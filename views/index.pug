@@ -22,8 +22,8 @@ block content
               h3 #{message.title}
               p #{message.text} 
             div(class="message-info")
-              p N/A 
               p anonymous
+              p N/A 
         if (currentUser && currentUser.isMember)
           div(class="message-container")
             div(class='left-message')
@@ -38,5 +38,5 @@ block content
                 div.delete-msg
                   form(action="" method="POST")
                     input(type="hidden", name="messageId", required="true", value=message._id)
-                    button(type="submit") &#128465
+                    button(type="submit") Delete Post &#128465
   
