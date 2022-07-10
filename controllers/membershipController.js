@@ -24,7 +24,7 @@ exports.member_post = [
         title: "Member Entry",
         errors: errors.array(),
       });
-    } else if (req.body.passcode !== "hi") {
+    } else if (req.body.passcode !== process.env.MEMBER_PASSWORD) {
       res.render("member_form", {
         title: "Member Entry",
         error: "Wrong Password",
@@ -69,7 +69,7 @@ exports.admin_post = [
         title: "Become an Admin",
         errors: errors.array(),
       });
-    } else if (req.body.passcode !== "adminhi") {
+    } else if (req.body.passcode !== process.env.ADMIN_PASSWORD) {
       res.render("admin_form", {
         title: "Become an Admin",
         error: "Wrong Password",
