@@ -23,7 +23,7 @@ exports.create_message_post = [
     }
 
     var message = new Message({
-      user: res.locals.currentUser,
+      user: req.user._id,
       title: req.body.messageTitle,
       text: req.body.messageText,
       timestamp: Date.now(),

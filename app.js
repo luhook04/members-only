@@ -11,6 +11,8 @@ const User = require("./models/userModel");
 const passport = require("passport");
 require("dotenv").config();
 const bcrypt = require("bcryptjs");
+var compression = require("compression");
+var helmet = require("helmet");
 
 const app = express();
 
@@ -75,6 +77,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
+app.use(compression());
 
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
@@ -96,6 +100,7 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
+
   res.status(err.status || 500);
   res.render("error");
 });
