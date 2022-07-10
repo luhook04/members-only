@@ -1,12 +1,12 @@
 extends layout 
 
 block content 
-	form(method='POST' action='/create-message')
+	form(action='/create-message' method='POST')
 		h2= title
 		.form-login
-			label(for="title") Title:
-			input(type='text', name="title" required='true' maxLength='15')
+			label(for="messageTitle") Title:
+			input(type='text', name="messageTitle" required='true' maxLength='25')
 		.form-login 
-			label(for='text') Message: 
-			input(type='textarea', name="text" required='true' rows="4" cols="50")
+			label(for='messageText') Message: 
+			input(type='text', name="messageText" required='true')
 		button(type='submit') Post

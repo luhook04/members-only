@@ -9,8 +9,8 @@ exports.create_message_get = (req, res, next) => {
 };
 
 exports.create_message_post = [
-  body("title").trim().isLength({ min: 1 }).escape(),
-  body("text").trim().isLength({ min: 1 }).escape(),
+  body("messageTitle").trim().isLength({ min: 1 }).escape(),
+  body("messageText").trim().isLength({ min: 1 }).escape(),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -22,10 +22,10 @@ exports.create_message_post = [
       });
     }
 
-    const message = new Message({
+    var message = new Message({
       user: res.locals.currentUser,
-      title: req.body.title,
-      text: req.body.text,
+      title: req.body.messageTitle,
+      text: req.body.messageText,
       timestamp: Date.now(),
     }).save((err) => {
       if (err) {
