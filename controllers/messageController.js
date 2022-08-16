@@ -9,8 +9,8 @@ exports.create_message_get = (req, res, next) => {
 };
 
 exports.create_message_post = [
-  body("messageTitle").trim().isLength({ min: 1 }).escape(),
-  body("messageText").trim().isLength({ min: 1 }).escape(),
+  body("messageTitle").trim().isLength({ min: 1 }),
+  body("messageText").trim().isLength({ min: 1 }),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -37,11 +37,8 @@ exports.create_message_post = [
 ];
 
 exports.delete_message_post = (req, res, next) => {
-  Message.findByIdAndRemove(
-    req.body.messageId,
-    function deleteMessage(err) {
-      if (err) return next(err);
-      res.redirect("/");
-    }
-  );
+  Message.findByIdAndRemove(req.body.messageId, function deleteMessage(err) {
+    if (err) return next(err);
+    res.redirect("/");
+  });
 };
